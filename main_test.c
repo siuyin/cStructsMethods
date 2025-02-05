@@ -9,14 +9,19 @@ static MunitResult test_gerbau(const MunitParameter params[], void* user_data) {
 	assert_string_equal("abc","abc");
 	return MUNIT_OK;
 }
-
+static MunitResult test_terpau(const MunitParameter params[], void* user_data) {
+	(void) params;
+	(void) user_data;
+	return MUNIT_OK;
+}
 MunitTest test[] = {
-	{"/test-gerbau",test_gerbau,NULL,NULL,MUNIT_TEST_OPTION_NONE,NULL},
+	{"/gerbau",test_gerbau,NULL,NULL,MUNIT_TEST_OPTION_NONE,NULL},
+	{"/terpau",test_terpau,NULL,NULL,MUNIT_TEST_OPTION_NONE,NULL},
 	{NULL,NULL,NULL,NULL,MUNIT_TEST_OPTION_NONE,NULL}
 };
 
 static const MunitSuite suite = {
-	"/my-tests",test,NULL,1,MUNIT_SUITE_OPTION_NONE
+	"/junk",test,NULL,1,MUNIT_SUITE_OPTION_NONE
 };
 
 int main(int argc, char* argv[MUNIT_ARRAY_PARAM(argc+1)]){
