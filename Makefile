@@ -7,5 +7,4 @@ clean:
 	rm -f ./junk
 
 test:
-	gcc -o junktest -isystem ./munit ./munit/munit.c main_test.c -Wall
-	./junktest
+	gcc -o junktest -isystem ./munit ./munit/munit.c main_test.c -Wall && ./junktest
