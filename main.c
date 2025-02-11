@@ -64,6 +64,7 @@ MyStruct* NewMyStruct() {
 	return m;
 }
 
+
 int main() {
 	MyStruct* s = NewMyStruct();
 	s->a=254;
