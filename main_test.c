@@ -30,13 +30,12 @@ static MunitResult test_terpau(const MunitParameter params[], void* user_data) {
 	return MUNIT_OK;
 }
 static void* my_setup(const MunitParameter params[], void* user_data) {
-	user_data = malloc(sizeof(uint8_t));
+	assert_uint8(*(uint8_t*)user_data, ==, 42);
 	*(uint8_t*)user_data = 123;
 	return user_data;
 }
 static void my_teardown(void* fixture) {
 	assert_uint8(*(uint8_t*)fixture, ==, 123);
-	free(fixture);
 }
 
 static MunitResult test_my_setup(const MunitParameter params[], void* user_data) {
@@ -58,5 +57,7 @@ static const MunitSuite suite = {
 };
 
 int main(int argc, char* argv[MUNIT_ARRAY_PARAM(argc+1)]){
-	return munit_suite_main(&suite,(void*) "unit", argc,argv);
+	uint8_t my_data = 42;
+	return munit_suite_main(&suite,(void*) &my_data, argc,argv);
 }
+
